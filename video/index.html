@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Etiqueta Vídeo</title>
+</head>
+<body>
+	<video id="video" width="80%" height="50%">
+		<!-- Para especificar más de un tipo de video por los diferentes navegadores usamos el tag source -->
+		<source src="./demo.mp4" type="video/mp4">
+		<!-- Otros posibles formatos de video
+		<source src="./demo.ogg" type="video/ogg">
+		<source src="./demo.webm" type="video/webm">
+		-->
+		Tu navegador no soporta la etiqueta video
+	</video>
+
+	<button id="playbtn">Reproducir</button>
+	<button id="pausebtn">Pausar</button>
+	<button id="stopbtn">Detener</button>
+	<button id="backwardbtn">&lt;&lt;</button>
+	<button id="forwardbtn">&gt;&gt;</button>
+
+	<script type="text/javascript">
+		let video = document.getElementById('video');
+		let playbtn = document.getElementById('playbtn');
+		let pausebtn = document.getElementById('pausebtn');
+		let stopbtn = document.getElementById('stopbtn');
+		let backwardbtn = document.getElementById('backwardbtn');
+		let forwardbtn = document.getElementById('forwardbtn');
+
+		playbtn.addEventListener('click',function(){
+			video.play();
+		});
+
+		pausebtn.addEventListener('click',function(){
+			video.pause();
+		});
+
+		stopbtn.addEventListener('click',function(){
+			video.pause();
+			video.currentTime = 0;
+		});
+
+		backwardbtn.addEventListener('click',function(){
+			video.currentTime -= 1;
+		});
+
+		forwardbtn.addEventListener('click',function(){
+			video.currentTime += 1;
+		});
+	</script>
+</body>
+</html>
