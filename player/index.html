@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Mi reproductor de vídeo</title>
+	<link rel="stylesheet" type="text/css" href="./player.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+	<div class="video-player">
+		<video src="demo.mp4" width="800"></video>
+		<div class="controls">
+			<div class="top">
+				<div class="volume toggleSlide">
+					<i class="material-icons md-24 md-dark pointer show-volume">volume_up</i>
+					<div>
+						<input type="range" id="volume-slider" value="1" min="0" max="1" step="0.05">
+					</div>
+				</div>
+				<div class="speed toggleSlide">
+					<i class="material-icons md-24 md-dark pointer show-speed">settings</i>
+					<div>
+						<span class="playBackRate pointer" data-value="1.0">1x</span>
+						<span class="playBackRate pointer" data-value="2.0">2x</span>
+						<span class="playBackRate pointer" data-value="4.0">4x</span>
+						<span class="playBackRate pointer" data-value="8.0">8x</span>
+						<span class="playBackRate pointer" data-value="16.0">16x</span>
+					</div>
+				</div>
+			</div>
+			<div class="center">
+				<i class="material-icons md-96 md-dark pointer play-pause">play_arrow</i>
+			</div>
+			<div class="bottom">
+				<div class="bar-controls">
+					<span class="current-duration">00:00</span>
+					<span class="pull-right">
+						<i class="material-icons md-24 md-dark pointer set-full-screen">fullscreen</i>
+					</span>
+					<span class="pull-right full-duration">00:00</span>
+				</div>
+				<div class="progress pointer">
+					<div class="bar">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="./player.js"></script>
+	<script type="text/javascript">
+		let video = new Video('.video-player');
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Validaciones y CSS</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css" media="screen">
+		input:valid + span:after{
+			content: '\f00c';
+			font-family: FontAwesome;
+			color:green;
+		}
+		input:invalid + span:after{
+			content: '\f00d';
+			font-family: FontAwesome;
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<form class="" action="index.html" method="post">
+		<div class="">
+			<input type="url">
+			<span></span>
+		</div>
+		<div class="">
+			<input type="text">
+			<span></span>
+		</div>
+		<div class="">
+			<input type="text" required>
+			<span></span>
+		</div>
+		<div class="">
+			<input type="email" required placeholder="Ingresa una cuenta de correo electrónico válida">
+			<span></span>
+		</div>
+		<button id="btn">Enviar</button>
+	</form>
+	<script type="text/javascript">
+		document.querySelector('#btn').addEventListener("click",function(){
+			if(!document.querySelector('form').checkValidity()){
+				var invalidos = document.querySelectorAll("form input:valid");
+				invalidos.forEach(function(el){
+					el.style.opacity = "0.6";
+				});
+			}
+		});
+	</script>
+</body>
+</html>

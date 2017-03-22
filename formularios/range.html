@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Input Range</title>
+	<style type="text/css">
+		input[type='range']{
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			background-color: yellow;
+			height: 7px;
+			outline: none;
+			border-radius: 8px;
+		}
+		input[type='range']::-webkit-slider-thumb{
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			background-color: green;
+			height: 15px;
+			width: 15px;
+			border-radius: 50%;
+		}
+		input[type='range']::-moz-slider-thumb{
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			background-color: green;
+			height: 15px;
+			width: 15px;
+			border-radius: 50%;
+		}
+		input[type='range']::-ms-slider-thumb{
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			background-color: green;
+			height: 15px;
+			width: 15px;
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+	<h2>Input tipo Rango</h2>
+	<form>
+		<span id="valor"></span>
+		<input type="range" max="100" min="0" step="10">
+	</form>
+	<script type="text/javascript">
+		let rangeEL = document.querySelector('input[type="range"]');
+
+		rangeEL.addEventListener('input',function(){
+			document.querySelector('#valor').innerHTML = rangeEL.value;
+		});
+	</script>
+</body>
+</html>
