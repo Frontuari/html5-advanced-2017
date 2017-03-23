@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Canvas</title>
+	<style type="text/css" media="screen">
+		canvas{border: solid;}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script type="text/javascript">
+		const canvas = document.querySelector('#canvas');
+
+		canvas.width = 400;
+		canvas.height = 200;
+
+		const ctx = canvas.getContext('2d');
+
+		let rectangle = {
+			x: 0,
+			y: 0,
+			width: 100,
+			height: 100
+		}
+
+		function drawRectangle(){
+			ctx.fillRect(rectangle.x,rectangle.y,rectangle.width,rectangle.height);
+		}
+
+		function clean(){
+			ctx.clearRect(0,0,canvas.width,canvas.height);
+		}
+
+		document.addEventListener('keydown',function(ev){
+			if(ev.keyCode == 38)
+				rectangle.y -= 5;
+			if(ev.keyCode == 40)
+				rectangle.y += 5;
+			if(ev.keyCode == 37)
+				rectangle.x -= 5;
+			if(ev.keyCode == 39)
+				rectangle.x += 5;
+		});
+
+		function loop(){
+			clean();
+			drawRectangle();
+			requestAnimationFrame(loop);
+		}
+
+		requestAnimationFrame(loop);
+
+	</script>
+</body>
+</html>
