@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Pixeles con Canvas</title>
+	<style type="text/css" media="screen">
+		canvas{border: solid;}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script type="text/javascript">
+		const canvas = document.querySelector('#canvas');
+
+		canvas.width = 1000;
+		canvas.height = 800;
+
+		const ctx = canvas.getContext('2d');
+
+		let image = new Image();
+
+		image.src = "./demo.jpg";
+
+		image.onload = function(){
+			/*	Imagen Original */
+			ctx.drawImage(this,0,0,700,350);
+			convertirBlancoyNegro();
+		}
+
+		function convertirBlancoyNegro(){
+			let imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+			let pixeles = imageData.data;
+			for(let i = 0; i< pixeles.length; i += 4){
+				const pixel = {
+					r: pixeles[i],
+					g: pixeles[i+1],
+					b: pixeles[i+2],
+					a: pixeles[i+3]
+				}
+
+				const average = (pixel.r + pixel.g + pixel.b) / 3;
+
+				pixeles[i] = average;
+				pixeles[i+1] = average;
+				pixeles[i+2] = average;
+			}
+			ctx.putImageData(imageData,0,0);
+		}
+	</script>
+</body>
+</html>
